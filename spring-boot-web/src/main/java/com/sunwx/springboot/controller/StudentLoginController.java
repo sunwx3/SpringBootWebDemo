@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.CollectionUtils;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -19,7 +16,7 @@ import java.util.Map;
 public class StudentLoginController {
     @Autowired
     StudentService studentService;
-    @RequestMapping(value = "/stu/login")
+    @GetMapping(value = "/stu/login")
     public String login(Student stu, Map<String,Object> map, HttpSession session){
         List<Student> students = studentService.selectStu(stu);
         System.out.println("aaaaaaaaaaaaa");
