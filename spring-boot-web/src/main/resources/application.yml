@@ -52,3 +52,5 @@ mybatis:
 #server:
 #  servlet:
  #   context-path: /test
+logging:
+  config: classpath:logging-config.xml
