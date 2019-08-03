@@ -1,5 +1,6 @@
 package com.sunwx.springboot.compoent;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -10,12 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * 拦截器进行登陆检查
  */
+@Slf4j
 @Component
 public class LoginHandlerInterceptor implements HandlerInterceptor {
     //目标方法执行之前
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        long start = System.currentTimeMillis();
         //System.out.println(start);
         Object user = request.getSession().getAttribute("loginMsg");
         if (user == null){

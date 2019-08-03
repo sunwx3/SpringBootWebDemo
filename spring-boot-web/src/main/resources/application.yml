@@ -51,6 +51,6 @@ mybatis:
   mapper-locations: classpath:mybatis/mapper/*.xml
 #server:
 #  servlet:
- #   context-path: /test
+#    context-path: /test
 logging:
   config: classpath:logging-config.xml

@@ -17,7 +17,7 @@ import java.util.Map;
 public class StudentLoginController {
     @Autowired
     StudentService studentService;
-    @GetMapping(value = "/stu/login")
+    @RequestMapping(value = "/stu/login")
     public String login(Student stu, Map<String,Object> map, HttpSession session){
         List<Student> students = studentService.selectStu(stu);
         System.out.println("aaaaaaaaaaaaa");
