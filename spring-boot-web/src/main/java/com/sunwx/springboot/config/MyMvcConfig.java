@@ -39,6 +39,6 @@ public class MyMvcConfig extends WebMvcConfigurationSupport {
     protected void addInterceptors(InterceptorRegistry registry) {
         log.info("进入拦截器");
        registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**")
-               .excludePathPatterns("/","/stu/login","/static/**");
+               .excludePathPatterns("/","/stu/login","/static/**","/templates/register.html");
     }
 }
