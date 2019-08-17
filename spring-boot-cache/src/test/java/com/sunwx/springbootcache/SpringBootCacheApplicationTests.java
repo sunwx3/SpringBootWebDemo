@@ -20,8 +20,7 @@ public class SpringBootCacheApplicationTests {
     StringRedisTemplate stringRedisTemplate;//操作k-v都是字符串
     @Autowired
     RedisTemplate redisTemplate;//k-v 都是对象
-    @Autowired
-    RedisTemplate<Object,Employee> empRedisTemplate;
+
     @Test
     public void contextLoads() {
     }
@@ -39,7 +38,7 @@ public class SpringBootCacheApplicationTests {
         //默认如果保存对象，使用jdk序列化机制，序列化的数据保存到redis中
         //redisTemplate.opsForValue().set("emp-01",employee);
         //将数据以json形式保存
-        empRedisTemplate.opsForValue().set("emp01",employee);
+        redisTemplate.opsForValue().set("employee",employee);
     }
 
 }

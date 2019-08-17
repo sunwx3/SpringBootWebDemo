@@ -5,11 +5,13 @@ import com.sunwx.springbootcache.mapper.EmployeeMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.annotations.CacheNamespace;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
+import sun.misc.Cache;
 
 
 @Slf4j
@@ -18,11 +20,27 @@ import org.springframework.stereotype.Service;
 public class EmployeeService {
     @Autowired
     EmployeeMapper employeeMapper;
+    @Autowired
+    CacheManager cacheManager;
     // 能够根据方法的请求参数对其结果进行缓存
     @Cacheable
     public Employee getById(Integer id){
         System.out.println("查询"+id+"员工");
+        log.info("无缓存时调用");
         Employee employee = employeeMapper.getById(id);
+        return employee;
+    }
+
+    /**
+     * 使用代码侵入的方式存redis缓存
+     * @param id
+     */
+    public Employee getByIdToRedis(Integer id){
+        log.info("查询"+id+"员工");
+        log.info("无缓存时调用");
+        Employee employee = employeeMapper.getById(id);
+        Cache cache = (Cache) cacheManager.getCache("emp");
+        cache.put("emp"+id,employee);
         return employee;
     }
     @CachePut
