@@ -5,13 +5,13 @@ import com.sunwx.springbootcache.mapper.EmployeeMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.annotations.CacheNamespace;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
-import sun.misc.Cache;
 
 
 @Slf4j
@@ -39,7 +39,7 @@ public class EmployeeService {
         log.info("查询"+id+"员工");
         log.info("无缓存时调用");
         Employee employee = employeeMapper.getById(id);
-        Cache cache = (Cache) cacheManager.getCache("emp");
+        Cache cache =cacheManager.getCache("emp");
         cache.put("emp"+id,employee);
         return employee;
     }

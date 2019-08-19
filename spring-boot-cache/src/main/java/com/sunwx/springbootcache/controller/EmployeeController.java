@@ -21,7 +21,7 @@ public class EmployeeController {
     }
     @RequestMapping("/employee/{id}")
     public Employee getByIdToRedis(@PathVariable("id") Integer id){
-        Employee employee = employeeService.getById(id);
+        Employee employee = employeeService.getByIdToRedis(id);
         return employee;
     }
     @GetMapping("/emp")
