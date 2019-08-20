@@ -35,6 +35,7 @@ public class EmployeeService {
      * 使用代码侵入的方式存redis缓存
      * @param id
      */
+    @Cacheable
     public Employee getByIdToRedis(Integer id){
         log.info("查询"+id+"员工");
         log.info("无缓存时调用");

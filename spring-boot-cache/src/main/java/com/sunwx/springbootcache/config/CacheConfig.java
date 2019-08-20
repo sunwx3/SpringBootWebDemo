@@ -50,8 +50,8 @@ public class CacheConfig extends CachingConfigurerSupport {
         RedisCacheConfiguration redisCacheConfiguration= RedisCacheConfiguration.defaultCacheConfig()
                 .entryTtl(timeout)//设置失效时间
                 .serializeKeysWith(RedisSerializationContext.SerializationPair.fromSerializer(keySerializer()))//设置默认key生成规则
-                .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(valueSerializer()))//设置默认value生成规则
-                .disableCachingNullValues();//不将null写入缓存
+                .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(valueSerializer()));//设置默认value生成规则
+               // .disableCachingNullValues()//不将null写入缓存
         RedisCacheManager redisCacheManager =RedisCacheManager.builder(redisConnectionFactory)
                 .cacheDefaults(redisCacheConfiguration).transactionAware().build();
         return redisCacheManager;
