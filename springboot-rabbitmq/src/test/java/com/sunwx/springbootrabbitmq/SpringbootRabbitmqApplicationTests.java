@@ -1,8 +1,9 @@
 package com.sunwx.springbootrabbitmq;
 
+import com.sunwx.springbootrabbitmq.bean.Books;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.amqp.core.Message;
+import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,6 +18,8 @@ import java.util.Map;
 public class SpringbootRabbitmqApplicationTests {
     @Autowired
     RabbitTemplate rabbitTemplate;
+    @Autowired
+    AmqpAdmin amqpAdmin;
     @Test
     public void contextLoads() {
         //Message需要自己构造一个。定义消息体内容和消息头
@@ -38,6 +41,16 @@ public class SpringbootRabbitmqApplicationTests {
         System.out.println(overTop);
 
     }
-
+    @Test
+    public void sendMsg(){
+        rabbitTemplate.convertAndSend("exchange-topic","overTop.news", new Books(1,"红楼梦","曹雪芹"));
+    }
+    @Test
+    public void createExchange(){
+        amqpAdmin.declareExchange(new DirectExchange("amqpAdmin.exchange"));
+        amqpAdmin.declareQueue(new Queue("amqpAdmin.queue"));
+        amqpAdmin.declareBinding(new Binding("amqpAdmin.queue", Binding.DestinationType.QUEUE,
+                "amqpAdmin.exchange","amqp.hah",null));
+    }
 
 }
