@@ -64,10 +64,11 @@ public class RedisTestController extends BaseController{
             user.setAge(28);
             user.setId(getUuid());
             redisUtil.set("user",user, RedisConstants.datebase1);
-            User res = (User)redisUtil.get("user",RedisConstants.datebase1);
-            logger.info("res="+res.toString());
+            //User res = (User)redisUtil.get("user",RedisConstants.datebase1);
+            //logger.info("res="+res.toString());
             logger.info("读取redis成功");
-            return getModelMap(StateParameter.SUCCESS, res, "操作成功");
+            //return getModelMap(StateParameter.SUCCESS, res, "操作成功");
+            return getModelMap(StateParameter.SUCCESS, "", "操作成功");
         } catch (Exception e) {
             e.printStackTrace();
             return getModelMap(StateParameter.FAULT, null, "操作失败");

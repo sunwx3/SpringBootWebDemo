@@ -33,8 +33,8 @@ public class RedisConfig {
     @Value("${redis.hostName}")
     private String hostName;
 
-    @Value("${redis.password}")
-    private String password;
+    //@Value("${redis.password}")
+    //private String password;
 
     @Value("${redis.port}")
     private Integer port;
@@ -80,7 +80,7 @@ public class RedisConfig {
         redisStandaloneConfiguration.setPort(port);
         //由于我们使用了动态配置库,所以此处省略
         //redisStandaloneConfiguration.setDatabase(database);
-        redisStandaloneConfiguration.setPassword(RedisPassword.of(password));
+        //redisStandaloneConfiguration.setPassword(RedisPassword.of(password));   未设置密码
         JedisClientConfiguration.JedisClientConfigurationBuilder jedisClientConfiguration = JedisClientConfiguration.builder();
         jedisClientConfiguration.connectTimeout(Duration.ofMillis(timeout));
         JedisConnectionFactory factory = new JedisConnectionFactory(redisStandaloneConfiguration,
