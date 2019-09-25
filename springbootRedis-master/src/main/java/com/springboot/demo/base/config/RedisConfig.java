@@ -1,5 +1,6 @@
 package com.springboot.demo.base.config;
 
+import com.alibaba.fastjson.parser.ParserConfig;
 import com.springboot.demo.base.utils.FastJson2JsonRedisSerializer;
 import com.springboot.demo.base.utils.RedisUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -66,6 +67,14 @@ public class RedisConfig {
     @Value("${redis.testWhileIdle}")
     private boolean testWhileIdle;
 
+    /**
+     *解决com.alibaba.fastjson.JSONException: autoType is not support 异常处理
+     */
+    RedisConfig(){
+        //打开autotype功能,需要强转的类一次添加其后
+        ParserConfig.getGlobalInstance()
+                .addAccept("com.springboot.demo.entity.User");
+    }
     /**
      * @auther: zhangyingqi
      * @date: 17:52 2018/8/28
