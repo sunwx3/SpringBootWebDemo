@@ -19,7 +19,7 @@
           <element id="library" level="project" name="Maven: org.apache.tomcat.embed:tomcat-embed-core:8.5.32" />
           <element id="library" level="project" name="Maven: org.apache.tomcat.embed:tomcat-embed-el:8.5.32" />
           <element id="library" level="project" name="Maven: org.apache.tomcat.embed:tomcat-embed-websocket:8.5.32" />
-          <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-data-jpa:2.0.4.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-jdbc:2.0.4.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter:2.0.4.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot:2.0.4.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-autoconfigure:2.0.4.RELEASE" />
@@ -30,19 +30,24 @@
           <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-api:2.10.0" />
           <element id="library" level="project" name="Maven: org.slf4j:jul-to-slf4j:1.7.25" />
           <element id="library" level="project" name="Maven: org.yaml:snakeyaml:1.19" />
+          <element id="library" level="project" name="Maven: com.zaxxer:HikariCP:2.7.9" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.25" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:5.0.8.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-beans:5.0.8.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-tx:5.0.8.RELEASE" />
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.46" />
+          <element id="library" level="project" name="Maven: org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.0" />
+          <element id="library" level="project" name="Maven: org.mybatis.spring.boot:mybatis-spring-boot-autoconfigure:2.1.0" />
+          <element id="library" level="project" name="Maven: org.mybatis:mybatis:3.5.2" />
+          <element id="library" level="project" name="Maven: org.mybatis:mybatis-spring:2.0.2" />
+          <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-data-jpa:2.0.4.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-aop:2.0.4.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-aop:5.0.8.RELEASE" />
           <element id="library" level="project" name="Maven: org.aspectj:aspectjweaver:1.8.13" />
-          <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-jdbc:2.0.4.RELEASE" />
-          <element id="library" level="project" name="Maven: com.zaxxer:HikariCP:2.7.9" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:5.0.8.RELEASE" />
           <element id="library" level="project" name="Maven: javax.transaction:javax.transaction-api:1.2" />
           <element id="library" level="project" name="Maven: org.springframework.data:spring-data-jpa:2.0.9.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.data:spring-data-commons:2.0.9.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-orm:5.0.8.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-tx:5.0.8.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-beans:5.0.8.RELEASE" />
-          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.25" />
           <element id="library" level="project" name="Maven: org.springframework:spring-aspects:5.0.8.RELEASE" />
           <element id="library" level="project" name="Maven: org.hibernate:hibernate-core:5.2.10.Final" />
           <element id="library" level="project" name="Maven: org.jboss.logging:jboss-logging:3.3.2.Final" />
@@ -91,7 +96,6 @@
           <element id="library" level="project" name="Maven: javax.validation:validation-api:2.0.1.Final" />
           <element id="library" level="project" name="Maven: org.springframework:spring-web:5.0.8.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:5.0.8.RELEASE" />
-          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.46" />
           <element id="library" level="project" name="Maven: org.springframework:spring-core:5.0.8.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-jcl:5.0.8.RELEASE" />
           <element id="library" level="project" name="Maven: redis.clients:jedis:2.9.0" />

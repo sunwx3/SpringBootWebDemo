@@ -5,7 +5,7 @@ import org.springframework.data.redis.connection.jedis.JedisConnection;
 
 /**
  * @ClassName: RedisTemplate
- * @Auther: zhangyingqi
+ * @Auther: sunwx
  * @Date: 2018/8/28 16:15
  * @Description: 重写RedisTemplate,加入选库
  */
