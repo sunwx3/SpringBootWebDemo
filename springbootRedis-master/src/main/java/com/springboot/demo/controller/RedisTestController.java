@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import redis.clients.jedis.Jedis;
 
 import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
@@ -116,6 +117,7 @@ public class RedisTestController extends BaseController{
     @RequestMapping("/updUser/{name}")
     public ModelMap updUser(User user){
         try {
+            user.setUpdateDate(new Date());
             int updUser = userService.updUser(user);
             logger.info("修改数据库成功");
             User user1 = userService.SelUser(user);
@@ -130,16 +132,19 @@ public class RedisTestController extends BaseController{
     @RequestMapping("/selByName/{name}")
     public ModelMap selByName(User user){
         try {
+            /*Jedis jedis =  new Jedis("127.0.0.1", 6379);
+            jedis.select(2);*/
             String key = "userInfo_"+user.getName();
             logger.info(key);
             if(redisUtil.hasKey(key)){
-                User userInfo = (User) redisUtil.get(key, RedisConstants.datebase1);
+                User userInfo = (User) redisUtil.get(key, RedisConstants.datebase2);
+                redisUtil.redisChooseDB(RedisConstants.datebase2);
                 logger.info("缓存读取："+userInfo.toString());
                 return getModelMap(StateParameter.SUCCESS, userInfo, "操作成功");
             }else {
                 User selByName = userService.selByName(user);
-                redisUtil.set("userInfo_"+user.getName(),selByName,RedisConstants.datebase1);
-                logger.info("加载缓存键为：："+key);
+                redisUtil.set("userInfo_"+user.getName(),selByName,RedisConstants.datebase2);
+                logger.info("加载缓存键为："+key);
                 logger.info("数据库读取："+selByName.toString());
                 return getModelMap(StateParameter.SUCCESS, selByName, "操作成功");
             }

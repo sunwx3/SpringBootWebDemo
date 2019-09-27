@@ -5,18 +5,27 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+import com.springboot.demo.base.config.RedisConfig;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import com.springboot.demo.base.utils.RedisTemplate;
+import org.springframework.data.redis.connection.RedisConnection;
+import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
+import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
+import org.springframework.data.redis.core.HashOperations;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
-
+@Slf4j
 @Lazy
 @Component
 public class RedisUtil{
 
 	@Autowired
 	private RedisTemplate redisTemplate;
+	@Autowired
+	RedisConfig redisConfig;
 
 	public void setRedisTemplate(RedisTemplate redisTemplate) {
 		this.redisTemplate = redisTemplate;
@@ -39,6 +48,25 @@ public class RedisUtil{
 			return false;
 		}
 	}
+	/**
+	 * @Author : sunwx
+	 * @Date : 2019/9/27
+	 * @Param : [db]
+	 * @return : void
+	 * @Description : Redis切换不同db PS:用完一定要切换回原来的DB，不然其他的没办法用
+	 */
+	public void redisChooseDB(int db) {
+		JedisConnectionFactory jedisConnectionFactory = (JedisConnectionFactory) redisTemplate.getConnectionFactory();
+		Integer indexdb = redisTemplate.indexdb.get();
+		log.info("1============="+String.valueOf(indexdb));
+		if (jedisConnectionFactory != null && db != jedisConnectionFactory.getDatabase()) {
+			redisTemplate.indexdb.set(db);
+			Integer indexdb2 = redisTemplate.indexdb.get();
+			log.info("2============="+String.valueOf(indexdb2));
+			this.redisTemplate.setConnectionFactory(jedisConnectionFactory);
+		}
+	}
+
 
 	/**
 	 * 根据key 获取过期时间
@@ -530,6 +558,9 @@ public class RedisUtil{
 			e.printStackTrace();
 			return 0;
 		}
+	}
+	public void selDB(){
+
 	}
 
 	public static void main(String[] args) {

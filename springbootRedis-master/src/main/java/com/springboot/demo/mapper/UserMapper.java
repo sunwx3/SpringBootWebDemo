@@ -12,7 +12,7 @@ public interface UserMapper {
     public int  insertUser(User user);
     @Select("select * from user where name = #{name}")
     public User SelUser(User user);
-    @Update("update user set name = #{name} where name = 'zhang'")
+    @Update("update user set name = #{name} where name = 'zhangsan'")
     public int updUser(User user);
     @Select("select * from user where name = #{name}")
     public User selByName(User user);
