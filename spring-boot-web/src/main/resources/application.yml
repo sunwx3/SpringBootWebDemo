@@ -1,8 +1,28 @@
 spring:
+  profiles:
+    active: dev
+  aop:
+    proxy-target-class: true
+  http:
+    encoding:
+      charset: UTF-8
+      enable: true
+      force: true
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: Asia/Shanghai
+  #cache:
+    #ehcache:
+      #config: classpath:/
   #禁用thymeleaf缓存
   thymeleaf:
     cache: false
   datasource:
+    #tomcat:
+     # max-active: 200
+    #  max-idle: 10
+    #  test-while-idle: true
+    #  validation-query: select 'x'
     type: com.alibaba.druid.pool.DruidDataSource
     username: root
     password: root
@@ -51,6 +71,9 @@ mybatis:
   mapper-locations: classpath:mybatis/mapper/*.xml
 #server:
 #  servlet:
-#    context-path: /test
-logging:
-  config: classpath:logging-config.xml
+ #   context-path: /MSMall
+    #	Micro Service mall 微服务商城
+#  servlet:
+ #   context-path: /test
+ # port: 8080
+

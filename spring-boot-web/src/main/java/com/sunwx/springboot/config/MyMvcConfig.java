@@ -1,7 +1,6 @@
 package com.sunwx.springboot.config;
 
 import com.sunwx.springboot.compoent.LoginHandlerInterceptor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -9,7 +8,6 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
 //springbppt 2.0 使用WebMvcConfigurationSupport可以扩展SpringMvc功能
-@Slf4j
 @Configuration
 public class MyMvcConfig extends WebMvcConfigurationSupport {
     @Override
@@ -28,17 +26,13 @@ public class MyMvcConfig extends WebMvcConfigurationSupport {
         //需要配置1：----------- 需要告知系统，这是要被当成静态文件的！
         //第一个方法设置访问路径前缀，第二个方法设置资源路径
         registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
-        //请求为/templates/下的访问classpath:/templates/
-        registry.addResourceHandler("/templates/**").addResourceLocations("classpath:/templates/");
-        //registry.addResourceHandler("/stu/**").addResourceLocations("classpath:/templates/");
-        //super.addResourceHandlers(registry);
     }
 
     //注册拦截器
     @Override
     protected void addInterceptors(InterceptorRegistry registry) {
-        log.info("进入拦截器");
+        System.out.println("aaaa");
        registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**")
-               .excludePathPatterns("/","/stu/login","/static/**","/templates/register.html");
+               .excludePathPatterns("/","/stu/login","/static/**");
     }
 }

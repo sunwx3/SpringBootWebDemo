@@ -2,16 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.sunwx.springboot.mapper.StudentMapper" >
     <resultMap id="BaseResultMap" type="com.sunwx.springboot.bean.Student" >
-        <result column="studentId" property="studentId" jdbcType="INTEGER" />
-        <result column="studentName" property="studentName" jdbcType="VARCHAR" />
-        <result column="studentSex" property="studentSex" jdbcType="VARCHAR" />
-        <result column="studentNum" property="studentNum" jdbcType="VARCHAR" />
-        <result column="studentCode" property="studentCode" jdbcType="VARCHAR" />
-        <result column="studentPass" property="studentPass" jdbcType="VARCHAR" />
+        <result column="student_id" property="student_id" jdbcType="INTEGER" />
+        <result column="student_name" property="student_name" jdbcType="VARCHAR" />
+        <result column="student_sex" property="student_sex" jdbcType="VARCHAR" />
+        <result column="student_num" property="student_num" jdbcType="VARCHAR" />
+        <result column="student_code" property="student_code" jdbcType="VARCHAR" />
+        <result column="student_pass" property="student_pass" jdbcType="VARCHAR" />
     </resultMap>
 
     <select id="selectStu" resultMap="BaseResultMap">
-        select * from student where student_code = #{studentCode} and student_pass = #{studentPass}
+        select * from student where student_code = #{student_code} and student_pass = #{student_pass}
     </select>
 
 </mapper>
