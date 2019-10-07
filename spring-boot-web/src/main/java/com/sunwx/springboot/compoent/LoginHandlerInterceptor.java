@@ -15,7 +15,7 @@ public class LoginHandlerInterceptor implements HandlerInterceptor {
     //目标方法执行之前
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        long start = System.currentTimeMillis();
+        /*long start = System.currentTimeMillis();
         System.out.println(start);
         Object user = request.getSession().getAttribute("loginMsg");
         if (user == null){
@@ -26,7 +26,8 @@ public class LoginHandlerInterceptor implements HandlerInterceptor {
         }else {
             //已登录，放行
             return true;
-        }
+        }*/
+        return true;
     }
 
     @Override

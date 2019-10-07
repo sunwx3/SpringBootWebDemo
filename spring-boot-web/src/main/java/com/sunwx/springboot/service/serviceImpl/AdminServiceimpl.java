@@ -1,6 +1,5 @@
 package com.sunwx.springboot.service.serviceImpl;
 
-import com.sunwx.springboot.bean.Student;
 import com.sunwx.springboot.entity.ums_admin;
 import com.sunwx.springboot.entity.ums_adminExample;
 import com.sunwx.springboot.mapper.ums_adminMapper;
@@ -10,11 +9,15 @@ import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 @Slf4j
+@Service
 public class AdminServiceimpl implements AdminService {
-    @Autowired
+    private static final Logger logger = LoggerFactory.getLogger(AdminServiceimpl.class);
+    @Resource
     ums_adminMapper adminMapper;
     @Override
     public List<ums_admin> selectOne() {
@@ -22,10 +25,11 @@ public class AdminServiceimpl implements AdminService {
         ums_adminExample adminExample = new ums_adminExample();
         adminExample.createCriteria().andUsernameLike("%ad%");
         List<ums_admin> ums_admins = this.adminMapper.selectByExample(adminExample);
-       //logger.error("the list size is {}",ums_admins);
+        logger.error("the list size is {}",ums_admins);
         log.info("the list size is {}",ums_admins);
         return ums_admins;
     }
 
 
 }
+
