@@ -1,3 +1,4 @@
+/*
 package com.sunwx.springboot.controller;
 
 import com.sunwx.springboot.bean.Student;
@@ -31,3 +32,4 @@ public class StudentLoginController {
         }
     }
 }
+*/

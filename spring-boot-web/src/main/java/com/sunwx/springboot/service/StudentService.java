@@ -1,3 +1,4 @@
+/*
 package com.sunwx.springboot.service;
 
 import com.sunwx.springboot.bean.Student;
@@ -8,3 +9,4 @@ import java.util.List;
 public interface StudentService {
     List<Student> selectStu(Student stu);
 }
+*/

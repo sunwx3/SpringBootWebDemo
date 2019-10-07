@@ -1,3 +1,4 @@
+/*
 package com.sunwx.springboot.mapper;
 
 import com.sunwx.springboot.bean.Student;
@@ -11,3 +12,4 @@ import java.util.List;
 public interface StudentMapper {
     List<Student> selectStu(Student stu);
 }
+*/
