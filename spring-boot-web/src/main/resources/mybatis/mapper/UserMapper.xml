@@ -79,8 +79,8 @@
     user_id, user_code, administrator, user_name, password, token, phone, email, status, 
     create_by, create_time, update_by, update_time, center_id
   </sql>
-  <select id="userLogin" resultMap="BaseResultMap" parameterMap="java.lang.String">
-    select * from ums_user where user_code = #{userCode,jdbcType=VARCHAR} and passwprd =#{password,jdbcType=VARCHAR}
+  <select id="userLogin" resultMap="BaseResultMap" parameterType="com.sunwx.springboot.entity.User">
+    select * from ums_user where user_code = #{userCode,jdbcType=VARCHAR} and password =#{password,jdbcType=VARCHAR}
   </select>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sunwx.springboot.entity.UserExample" >
     select

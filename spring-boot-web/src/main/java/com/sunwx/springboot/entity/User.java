@@ -243,4 +243,24 @@ public class User implements Serializable {
     public void setCenterId(String centerId) {
         this.centerId = centerId == null ? null : centerId.trim();
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId='" + userId + '\'' +
+                ", userCode='" + userCode + '\'' +
+                ", administrator='" + administrator + '\'' +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", token='" + token + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", status='" + status + '\'' +
+                ", createBy='" + createBy + '\'' +
+                ", createTime=" + createTime +
+                ", updateBy='" + updateBy + '\'' +
+                ", updateTime=" + updateTime +
+                ", centerId='" + centerId + '\'' +
+                '}';
+    }
 }
