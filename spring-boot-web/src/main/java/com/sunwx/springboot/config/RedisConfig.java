@@ -1,8 +1,9 @@
-package com.springboot.demo.base.config;
+package com.sunwx.springboot.config;
 
 import com.alibaba.fastjson.parser.ParserConfig;
-import com.springboot.demo.base.utils.FastJson2JsonRedisSerializer;
-import com.springboot.demo.base.utils.RedisUtil;
+import com.sunwx.springboot.utils.FastJson2JsonRedisSerializer;
+import com.sunwx.springboot.utils.RedisTemplate;
+import com.sunwx.springboot.utils.RedisUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -12,7 +13,6 @@ import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisClientConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
-import com.springboot.demo.base.utils.RedisTemplate;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;

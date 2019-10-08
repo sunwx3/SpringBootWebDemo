@@ -1,4 +1,16 @@
 spring:
+  #profiles:
+   # active: dev
+  #aop:
+   # proxy-target-class: true
+  #http:
+   # encoding:
+    #  charset: UTF-8
+     # enable: true
+      #force: true
+  #jackson:
+   # date-format: yyyy-MM-dd HH:mm:ss
+   # time-zone: Asia/Shanghai
   #cache:
     #ehcache:
       #config: classpath:/
@@ -54,14 +66,18 @@ spring:
     add-mappings: false
   mvc:
     static-path-pattern: /static/**
+
+  main:
+    allow-bean-definition-overriding: true
 mybatis:
   config-location: classpath:mybatis/mybatis-config.xml
   mapper-locations: classpath:mybatis/mapper/*.xml
 logging:
   config: classpath:logging-config.xml
+
 #server:
-#  servlet:
- #   context-path: /MSMall
+ #servlet:
+   #context-path: /MSMall
     #	Micro Service mall 微服务商城
 #  servlet:
  #   context-path: /test
