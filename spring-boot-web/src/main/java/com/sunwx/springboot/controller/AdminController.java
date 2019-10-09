@@ -21,7 +21,7 @@ public class AdminController {
     @Resource
     AdminService adminService;
     @RequestMapping("/selectOne")
-    @ApiOperation(value = "查询一个用户",httpMethod = "POST",
+    @ApiOperation(value = "查询一个用户",httpMethod = "GET",
             notes="nickName 用户姓名" +
                     "	\n phone 用户手机号" +
                     "	\n sessionId 会话id" +

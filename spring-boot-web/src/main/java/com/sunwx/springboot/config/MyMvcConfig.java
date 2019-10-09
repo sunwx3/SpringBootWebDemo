@@ -24,8 +24,15 @@ public class MyMvcConfig extends WebMvcConfigurationSupport {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         //需要配置1：----------- 需要告知系统，这是要被当成静态文件的！
-        //第一个方法设置访问路径前缀，第二个方法设置资源路径
+        //第一个方法设置访问路径前缀(映射)，第二个方法设置资源路径
         registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
+        registry.addResourceHandler("/swagger-ui.html")
+                .addResourceLocations("classpath:/META-INF/resources/");
+
+        registry.addResourceHandler("/webjars/**")
+                .addResourceLocations("classpath:/META-INF/resources/webjars/");
+
+
     }
 
     //注册拦截器
@@ -33,6 +40,6 @@ public class MyMvcConfig extends WebMvcConfigurationSupport {
     protected void addInterceptors(InterceptorRegistry registry) {
         System.out.println("aaaa");
        registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**")
-               .excludePathPatterns("/","/stu/login","/static/**");
+               .excludePathPatterns("/","/stu/login","/static/**","/**/*.css", "/**/*.js", "/**/*.png", "/**/*.jpg", "/**/*.jpeg", "/*.html", "/**/*.html","/swagger-resources/**");
     }
 }

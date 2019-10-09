@@ -75,9 +75,9 @@ mybatis:
 logging:
   config: classpath:logging-config.xml
 
-#server:
- #servlet:
-   #context-path: /MSMall
+server:
+ servlet:
+   context-path: /MSMall
     #	Micro Service mall 微服务商城
 #  servlet:
  #   context-path: /test
