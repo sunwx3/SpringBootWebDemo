@@ -12,6 +12,8 @@ public interface BrandMapper {
 
     int deleteByPrimaryKey(Long id);
 
+    int deleteByBanchPrimaryKey(List<Integer> list);
+
     int insert(Brand record);
 
     int insertSelective(Brand record);

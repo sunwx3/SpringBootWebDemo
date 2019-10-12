@@ -129,6 +129,14 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
+  <delete id="deleteByBanchPrimaryKey" parameterType="java.util.List">
+    delete from pms_brand
+    where id
+    in
+    <foreach collection="list" item="id" open="(" separator="," close=")">
+      #{id}
+    </foreach>
+  </delete>
   <insert id="insert" parameterType="com.sunwx.springboot.entity.Brand" >
     <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
