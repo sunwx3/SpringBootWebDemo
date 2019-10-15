@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
 @Service
-public abstract class AttributeCategoryServiceImpl implements AttributeCategoryService {
+public class AttributeCategoryServiceImpl implements AttributeCategoryService {
     private static final Logger logger = LoggerFactory.getLogger(AttributeCategoryServiceImpl.class);
 
     AttributeCategoryExample attributeCategoryExample = new AttributeCategoryExample();

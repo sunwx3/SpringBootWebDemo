@@ -21,7 +21,7 @@ import java.util.List;
 public class AttributeCategoryController extends BaseController {
     private static final Logger logger = LoggerFactory.getLogger(AttributeCategoryController.class);
     @Resource
-    AttributeCategoryService attributeCategoryService;
+    private AttributeCategoryService attributeCategoryService;
     @RequestMapping("/selectAllAttCat")
     public ResEnv<List<AttributeCategory>> selectAllAttCat(int pageNum,int pageSize) {
         Page page = new Page();
