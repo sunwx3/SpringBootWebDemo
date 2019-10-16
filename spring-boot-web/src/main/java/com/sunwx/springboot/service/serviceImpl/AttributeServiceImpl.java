@@ -16,4 +16,10 @@ public class AttributeServiceImpl implements AttributeService {
         List<Attribute> attributes = attributeMapper.selectAttributeByACId(id);
         return attributes;
     }
+
+    @Override
+    public List<Attribute> selectAllByACId(Integer id) {
+        attributeMapper.selectByPrimaryKey(Long.valueOf(id));
+        return null;
+    }
 }

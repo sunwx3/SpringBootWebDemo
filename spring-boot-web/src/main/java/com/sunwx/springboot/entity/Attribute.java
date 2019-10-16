@@ -10,7 +10,6 @@ public class Attribute implements Serializable {
      * <p>
      */
     private Long id;
-
     /**
      * pms_product_attribute.product_attribute_category_id: 
      * <p>
@@ -23,6 +22,16 @@ public class Attribute implements Serializable {
      */
     private String name;
 
+    private String CategoryName;
+
+    public String getCategoryName() {
+        return CategoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        CategoryName = categoryName;
+    }
+
     /**
      * pms_product_attribute.select_type: 
      * <p>
@@ -32,6 +41,8 @@ public class Attribute implements Serializable {
      */
     private Integer selectType;
 
+    private String SelectTypee;
+
     /**
      * pms_product_attribute.input_type: 
      * <p>
@@ -40,6 +51,25 @@ public class Attribute implements Serializable {
      * </code>
      */
     private Integer inputType;
+
+    public String getSelectTypee() {
+        return SelectTypee;
+    }
+
+    public void setSelectTypee(String selectTypee) {
+        SelectTypee = selectTypee;
+    }
+
+    public String getInputTypee() {
+        return InputTypee;
+    }
+
+    public void setInputTypee(String inputTypee) {
+        InputTypee = inputTypee;
+    }
+
+    private String InputTypee;
+
 
     /**
      * pms_product_attribute.input_list: 
@@ -200,4 +230,21 @@ public class Attribute implements Serializable {
         this.type = type;
     }
 
+    public Attribute(Long id, Long productAttributeCategoryId, String name, Integer selectType, Integer inputType, String inputList, Integer sort, Integer filterType, Integer searchType, Integer relatedStatus, Integer handAddStatus, Integer type) {
+        this.id = id;
+        this.productAttributeCategoryId = productAttributeCategoryId;
+        this.name = name;
+        this.selectType = selectType;
+        this.inputType = inputType;
+        this.inputList = inputList;
+        this.sort = sort;
+        this.filterType = filterType;
+        this.searchType = searchType;
+        this.relatedStatus = relatedStatus;
+        this.handAddStatus = handAddStatus;
+        this.type = type;
+    }
+
+    public Attribute() {
+    }
 }
