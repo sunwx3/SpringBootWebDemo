@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -51,7 +54,7 @@ public class AttributeCategoryController extends BaseController {
             boolean status = attributeCategoryService.insertAttCag(attributeCategory);
             Object json = JSONObject.toJSON(attributeCategory);
             if(status){
-                return getModelMap(StateParameter.SUCCESS, "json", "添加成功");
+                return getModelMap(StateParameter.SUCCESS, json, "添加成功");
             }else{
                 return getModelMap(StateParameter.FAULT, "", "添加失败");
             }
@@ -72,6 +75,26 @@ public class AttributeCategoryController extends BaseController {
         }catch (Exception e){
             e.printStackTrace();
             return getModelMap(StateParameter.FAULT, null, "添加失败");
+        }
+    }
+    @RequestMapping("/deleteAttCatByNames")
+    public ModelMap deleteAttCatByNames(HttpServletRequest request, HttpServletResponse response){
+        try {
+            String list =request.getParameter("list");
+            List<String> Names=new ArrayList<>();
+            String params[] = list.split(",");
+            for (int i = 0; i < params.length; i++) {
+                Names.add(params[i]);
+            }
+            boolean flag = attributeCategoryService.deleteAttCagByNames(Names);
+            if (flag){
+                return getModelMap(StateParameter.SUCCESS,"","删除成功");
+            }else{
+                return getModelMap(StateParameter.FAULT,"","删除失败");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            return getModelMap(StateParameter.FAULT, null, "删除失败");
         }
     }
 }

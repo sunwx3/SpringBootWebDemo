@@ -29,4 +29,6 @@ public interface AttributeCategoryMapper {
     int updateByPrimaryKeySelective(AttributeCategory record);
 
     int updateByPrimaryKey(AttributeCategory record);
+
+    int deleteByBanchName(List<String> list);
 }

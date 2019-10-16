@@ -64,4 +64,15 @@ public class AttributeCategoryServiceImpl implements AttributeCategoryService {
             flag = false;
         return flag;
     }
+
+    @Override
+    public boolean deleteAttCagByNames(List<String> list) {
+        int delete = attributeCategoryMapper.deleteByBanchName(list);
+        boolean flag;
+        if (delete>0){
+            flag = true;
+        }else
+            flag = false;
+        return flag;
+    }
 }

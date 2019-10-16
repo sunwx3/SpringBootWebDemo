@@ -13,4 +13,6 @@ public interface AttributeCategoryService {
     public boolean insertAttCag(AttributeCategory attributeCategory);
 
     public boolean deleteAttCag(Integer id);
+
+    public boolean deleteAttCagByNames(List<String> list);
 }
