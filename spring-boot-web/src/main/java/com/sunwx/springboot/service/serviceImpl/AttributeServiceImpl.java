@@ -22,4 +22,40 @@ public class AttributeServiceImpl implements AttributeService {
         attributeMapper.selectByPrimaryKey(Long.valueOf(id));
         return null;
     }
+
+    @Override
+    public boolean insertAttribute(Attribute attribute) {
+        int insert = attributeMapper.insertSelective(attribute);
+        boolean flag;
+        if (insert>0){
+            flag = true;
+        }else{
+            flag =  false;
+        }
+        return flag;
+    }
+
+    @Override
+    public boolean updateAttribute(Attribute attribute) {
+        int update = attributeMapper.updateByPrimaryKeySelective(attribute);
+        boolean flag;
+        if (update>0){
+            flag = true;
+        }else{
+            flag =  false;
+        }
+        return flag;
+    }
+
+    @Override
+    public boolean deleteByBanchId(List<Integer> id) {
+        int delete = attributeMapper.deleteByBanchId(id);
+        boolean flag;
+        if (delete>0){
+            flag = true;
+        }else{
+            flag =  false;
+        }
+        return flag;
+    }
 }

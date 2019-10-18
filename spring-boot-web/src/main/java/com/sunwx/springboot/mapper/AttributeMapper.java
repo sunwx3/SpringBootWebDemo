@@ -29,4 +29,6 @@ public interface AttributeMapper {
     int updateByPrimaryKey(Attribute record);
 
     List<Attribute> selectAttributeByACId(Integer id);
+
+    int deleteByBanchId(List<Integer> id);
 }
