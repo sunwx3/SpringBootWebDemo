@@ -33,4 +33,6 @@ public interface ProductMapper {
     int updateByPrimaryKeyWithBLOBs(Product record);
 
     int updateByPrimaryKey(Product record);
+
+    List<Product> selectBySome(Product product);
 }

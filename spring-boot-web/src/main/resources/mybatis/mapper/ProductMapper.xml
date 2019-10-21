@@ -146,6 +146,31 @@
       order by ${orderByClause}
     </if>
   </select>
+  <select id="selectBySome" resultMap="BaseResultMap" parameterType="com.sunwx.springboot.entity.Product" >
+    select
+    <include refid="Base_Column_List" />
+    from pms_product
+    <where>
+    <if test="name != null" >
+      name = #{name,jdbcType=VARCHAR}
+    </if>
+    <if test="verifyStatus != null" >
+    #{verifyStatus,jdbcType=INTEGER},
+    </if>
+    <if test="publishStatus != null" >
+      #{publishStatus,jdbcType=INTEGER},
+    </if>
+    <if test="brandId != null" >
+      #{brandId,jdbcType=BIGINT},
+    </if>
+    <if test="productSn != null" >
+      #{productSn,jdbcType=VARCHAR},
+    </if>
+    <if test="productCategoryId != null" >
+      #{productCategoryId,jdbcType=BIGINT}
+    </if>
+    </where>
+  </select>
   <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
