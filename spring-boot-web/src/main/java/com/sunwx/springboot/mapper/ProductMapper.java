@@ -35,4 +35,6 @@ public interface ProductMapper {
     int updateByPrimaryKey(Product record);
 
     List<Product> selectBySome(Product product);
+
+    int deleteByBanchId(List<Integer> id);
 }

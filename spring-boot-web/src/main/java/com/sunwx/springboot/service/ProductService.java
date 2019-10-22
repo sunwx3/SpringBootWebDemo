@@ -7,5 +7,8 @@ import java.util.List;
 
 public interface ProductService {
     public List<Product> selectAll(Page page);
+
     public List<Product> selectBySome(Product product);
+
+    public Boolean deleteByBanchId(List<Integer> id);
 }

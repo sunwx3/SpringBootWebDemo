@@ -35,4 +35,16 @@ public class ProductServiceImpl implements ProductService {
         List<Product> products = productMapper.selectBySome(product);
         return products;
     }
+
+    @Override
+    public Boolean deleteByBanchId(List<Integer> id) {
+        int delete = productMapper.deleteByBanchId(id);
+        boolean flag;
+        if (delete>0){
+            flag = true;
+        }else {
+            flag = false;
+        }
+        return flag;
+    }
 }

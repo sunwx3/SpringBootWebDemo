@@ -1,10 +1,13 @@
 package com.sunwx.springboot.controller;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.Page;
 import com.sunwx.springboot.entity.Brand;
 import com.sunwx.springboot.service.BrandService;
 import com.sunwx.springboot.utils.PageUtils;
+import com.sunwx.springboot.utils.RedisConstants;
+import com.sunwx.springboot.utils.RedisUtil;
 import com.sunwx.springboot.utils.StateParameter;
 import com.sunwx.springboot.vo.ResEnv;
 import io.swagger.annotations.Api;
@@ -14,6 +17,7 @@ import io.swagger.annotations.ApiOperation;
 import org.hibernate.annotations.Source;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,6 +28,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.awt.SystemColor.info;
+
 @RequestMapping("brand")
 @RestController
 @Api("商品品牌操作")
@@ -31,6 +37,8 @@ public class BrandController extends BaseController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     @Resource
     BrandService brandService;
+    @Autowired
+    RedisUtil redisUtil;
     @RequestMapping("/selectAllBrand")
     @ApiOperation(value = "查询所有品牌",httpMethod = "GET")
     @ApiImplicitParams({
@@ -45,8 +53,25 @@ public class BrandController extends BaseController {
         Page page =new Page();
         page.setPageNum(pageNum);
         page.setPageSize(pageSize);
-        List<Brand> brands = brandService.selectAllBrand(page);
-        return PageUtils.toResEnv(brands);
+        String key = "com.sunwx.springboot.brand";
+        redisUtil.redisChooseDB(1);
+        if(redisUtil.hasKey(key)){
+            Brand brands = (Brand)redisUtil.get(key, RedisConstants.datebase1);
+            String jsonString = JSONObject.toJSONString(brands);
+            List<Brand> objects = JSONObject.parseArray(jsonString,Brand.class);
+            logger.info("读取缓存:"+brands);
+            return PageUtils.toResEnv(objects);
+        }else{
+            List<Brand> brands = brandService.selectAllBrand(page);
+            String jsonString = JSONObject.toJSONString(brands);
+            JSONObject jsonObject = JSONObject.parseObject(jsonString);
+            Brand brand = JSONObject.toJavaObject(jsonObject, Brand.class);
+            redisUtil.set(key,brand,RedisConstants.datebase1);
+            logger.info("第一次查询 刷新缓存："+key+"，值为："+brands);
+            return PageUtils.toResEnv(brands);
+        }
+
+
     }
     @ApiOperation(value = "修改某个品牌",httpMethod = "GET")
     @ApiImplicitParams({
