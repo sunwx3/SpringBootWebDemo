@@ -2,6 +2,7 @@ package com.sunwx.springboot.controller;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.parser.ParserConfig;
 import com.github.pagehelper.Page;
 import com.sunwx.springboot.entity.Brand;
 import com.sunwx.springboot.service.BrandService;
@@ -50,23 +51,28 @@ public class BrandController extends BaseController {
                     defaultValue="{\"user_name\":\"\",\"passwd\":\"\",\"validCode\":\"\"}")
     })
     public ResEnv<List<Brand>> selectAllBrand(int pageNum, int pageSize){
+        ParserConfig.getGlobalInstance().setAutoTypeSupport(true);//解决 com.alibaba.fastjson.JSONException: autoType is not support
         Page page =new Page();
         page.setPageNum(pageNum);
         page.setPageSize(pageSize);
         String key = "com.sunwx.springboot.brand";
         redisUtil.redisChooseDB(1);
         if(redisUtil.hasKey(key)){
-            Brand brands = (Brand)redisUtil.get(key, RedisConstants.datebase1);
+            List<Brand> brands = (List<Brand>)redisUtil.get(key, RedisConstants.datebase1);
             String jsonString = JSONObject.toJSONString(brands);
             List<Brand> objects = JSONObject.parseArray(jsonString,Brand.class);
             logger.info("读取缓存:"+brands);
             return PageUtils.toResEnv(objects);
         }else{
             List<Brand> brands = brandService.selectAllBrand(page);
-            String jsonString = JSONObject.toJSONString(brands);
+            /*String jsonString = JSONObject.toJSONString(brands);
+            jsonString=jsonString.replace("[", "");
+            jsonString=jsonString.replace("]", "");
+            logger.info(jsonString);
             JSONObject jsonObject = JSONObject.parseObject(jsonString);
-            Brand brand = JSONObject.toJavaObject(jsonObject, Brand.class);
-            redisUtil.set(key,brand,RedisConstants.datebase1);
+
+            Brand brand = JSONObject.toJavaObject(jsonObject, Brand.class);*/
+            redisUtil.set(key,brands,RedisConstants.datebase1);
             logger.info("第一次查询 刷新缓存："+key+"，值为："+brands);
             return PageUtils.toResEnv(brands);
         }
