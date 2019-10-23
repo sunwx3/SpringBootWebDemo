@@ -54,8 +54,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/springboot/demo/controller/RedisTestController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="317">
-              <caret line="123" column="59" selection-start-line="123" selection-start-column="54" selection-end-line="123" selection-end-column="59" />
+            <state relative-caret-position="369">
+              <caret line="122" column="47" selection-start-line="122" selection-start-column="47" selection-end-line="122" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -188,8 +188,8 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -249,17 +249,19 @@
       <workItem from="1570535484901" duration="4962000" />
       <workItem from="1571731106632" duration="3035000" />
       <workItem from="1571735671396" duration="1182000" />
+      <workItem from="1571800527704" duration="92000" />
+      <workItem from="1571811364561" duration="611000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56484000" />
+    <option name="totallyTimeSpent" value="57187000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22867803" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23134328" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -545,8 +547,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/springboot/demo/controller/RedisTestController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="123" column="59" selection-start-line="123" selection-start-column="54" selection-end-line="123" selection-end-column="59" />
+        <state relative-caret-position="369">
+          <caret line="122" column="47" selection-start-line="122" selection-start-column="47" selection-end-line="122" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

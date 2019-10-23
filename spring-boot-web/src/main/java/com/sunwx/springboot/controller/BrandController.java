@@ -65,13 +65,6 @@ public class BrandController extends BaseController {
             return PageUtils.toResEnv(objects);
         }else{
             List<Brand> brands = brandService.selectAllBrand(page);
-            /*String jsonString = JSONObject.toJSONString(brands);
-            jsonString=jsonString.replace("[", "");
-            jsonString=jsonString.replace("]", "");
-            logger.info(jsonString);
-            JSONObject jsonObject = JSONObject.parseObject(jsonString);
-
-            Brand brand = JSONObject.toJavaObject(jsonObject, Brand.class);*/
             redisUtil.set(key,brands,RedisConstants.datebase1);
             logger.info("第一次查询 刷新缓存："+key+"，值为："+brands);
             return PageUtils.toResEnv(brands);
