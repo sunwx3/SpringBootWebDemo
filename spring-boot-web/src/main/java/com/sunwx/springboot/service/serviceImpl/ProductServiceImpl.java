@@ -47,4 +47,17 @@ public class ProductServiceImpl implements ProductService {
         }
         return flag;
     }
+
+    @Override
+    public boolean uploadPicture(Product product) {
+        productExample.createCriteria().andPicEqualTo(product.getPic());
+        int update = productMapper.updateByExampleSelective(product,productExample);
+        boolean flag;
+        if (update>0){
+            flag = true;
+        }else {
+            flag = false;
+        }
+        return flag;
+    }
 }

@@ -8,4 +8,6 @@ import java.util.List;
 
 public interface UserService {
     public List<User> userLogin(User user);
+
+    public List<User> selectAllUser(String id);
 }

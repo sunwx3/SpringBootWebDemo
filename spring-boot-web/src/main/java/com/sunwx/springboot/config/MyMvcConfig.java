@@ -14,6 +14,7 @@ public class MyMvcConfig extends WebMvcConfigurationSupport {
     protected void addViewControllers(ViewControllerRegistry registry) {
         //浏览器发送请求 / 展示index页面
         registry.addViewController("/").setViewName("login");
+        registry.addViewController("/test").setViewName("test");
         registry.addViewController("/index.html").setViewName("index");
         registry.addViewController("/error/404").setViewName("/admin/page_error/error_404.html");
     }

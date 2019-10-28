@@ -9,6 +9,7 @@ import com.sunwx.springboot.utils.StateParameter;
 import com.sunwx.springboot.vo.ResEnv;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

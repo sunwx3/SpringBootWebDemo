@@ -6,6 +6,7 @@ import com.sunwx.springboot.utils.RedisTemplate;
 import com.sunwx.springboot.utils.RedisUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
@@ -26,6 +27,7 @@ import java.time.Duration;
  * @Description:
  */
 @Configuration
+@EnableCaching
 @PropertySource("classpath:redis.properties")
 @Slf4j
 public class RedisConfig {

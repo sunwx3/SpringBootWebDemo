@@ -11,4 +11,6 @@ public interface ProductService {
     public List<Product> selectBySome(Product product);
 
     public Boolean deleteByBanchId(List<Integer> id);
+
+    public boolean uploadPicture(Product product);
 }
